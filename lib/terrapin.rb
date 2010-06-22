@@ -28,7 +28,7 @@ class Terrapin
 
   def init_screen
     @screen = Screen.new [800, 600], 0, [HWSURFACE, DOUBLEBUF, OPENGL]
-    @screen.title = 'Particles!'
+    @screen.title = 'terrapin - mass spectrometry viewer'
   end
 
   def init_clock
@@ -66,11 +66,26 @@ class Terrapin
   end
 
   def resize(w, h)
+    # Specifies the	field of view angle, in	degrees, in the y	direction
+    fovy = 45.0 
+
+    # Specifies the	aspect ratio that determines the field of view in the x
+    # direction.  The aspect ratio	is the ratio	of x (width) to	y (height).
+    aspect = w.to_f / h.to_f
+
+    # Specifies the	distance from the viewer to the	near clipping plane
+    # (always positive).
+    z_near = 1.0
+
+    # Specifies the	distance from the viewer to the	far clipping plane (always
+    # positive).
+    z_far = 1000.0
+
     h = 1 if h == 0
     glViewport 0, 0, w, h
     glMatrixMode GL_PROJECTION
     glLoadIdentity
-    gluPerspective 45.0, w.to_f / h.to_f, 1.0, 1000.0
+    gluPerspective fovy, aspect, z_near, z_far
     glMatrixMode GL_MODELVIEW
   end
 
