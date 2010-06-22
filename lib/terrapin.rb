@@ -1,10 +1,9 @@
 require 'rubygame'
 
-require 'gl'
-require 'glu'
+require 'ffi-opengl'
 
-include Gl
-include Glu
+include GL
+include GLU
 
 include Rubygame
 include Rubygame::Events
@@ -88,7 +87,7 @@ class Terrapin
     glVertex2i  5, -5
     glEnd
 
-    GL.swap_buffers
+    Rubygame::GL.swap_buffers()
   end
 
   def quit

@@ -1,7 +1,9 @@
 require 'spec_helper'
 
+require 'terrapin'
+
 describe "Terrapin" do
-  it "fails" do
-    should.flunk "hey buddy, you should probably rename this file and start specing for real"
+  it "runs" do
+    Terrapin.run
   end
 end
